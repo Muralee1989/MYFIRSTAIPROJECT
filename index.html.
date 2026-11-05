@@ -1,28 +1,148 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>AI Advertisement Generator</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My First AI Project</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0b1020;
+  color: white;
+}
+
+header {
+  padding: 22px 8%;
+  background: #111a30;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+header h2 {
+  color: #55c8ff;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 10px;
+}
+
+.hero {
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.hero h1 {
+  font-size: 42px;
+}
+
+.hero p {
+  color: #b9c5d8;
+  font-size: 18px;
+}
+
+.hero button {
+  background: #168cff;
+  color: white;
+  border: 0;
+  padding: 14px 28px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.section {
+  padding: 45px 8%;
+  text-align: center;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: #17233d;
+  padding: 30px;
+  border-radius: 12px;
+}
+
+.card p {
+  color: #b9c5d8;
+}
+
+footer {
+  text-align: center;
+  padding: 25px;
+  color: #aab5c8;
+}
+</style>
 </head>
+
 <body>
 
-    <h1>My AI Advertisement Generator</h1>
+<header>
+  <h2>MY FIRST AI PROJECT</h2>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#tools">AI Tools</a>
+    <a href="#automation">Automation</a>
+  </nav>
+</header>
 
-    <p>Create advertisements for your business.</p>
+<section class="hero" id="home">
+  <h1>Welcome to the AI Future</h1>
+  <p>Learn Artificial Intelligence, Build Tools and Create Automation.</p>
+  <button onclick="document.getElementById('tools').scrollIntoView()">
+    Explore Projects
+  </button>
+</section>
 
-    <h2>Business Details</h2>
+<section class="section" id="tools">
+  <h2>AI Tools</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>🤖 AI Assistant</h3>
+      <p>Your future personal AI assistant.</p>
+    </div>
+    <div class="card">
+      <h3>✍️ AI Content Creator</h3>
+      <p>Create content using AI technology.</p>
+    </div>
+    <div class="card">
+      <h3>🎬 AI Video Studio</h3>
+      <p>Explore AI-powered video creation.</p>
+    </div>
+  </div>
+</section>
 
-    <input type="text"
-    placeholder="Enter business name">
+<section class="section" id="automation">
+  <h2>Automation Projects</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>⚙️ Workflow Automation</h3>
+      <p>Build automated workflows.</p>
+    </div>
+    <div class="card">
+      <h3>📊 Smart Dashboard</h3>
+      <p>Learn data and dashboard automation.</p>
+    </div>
+  </div>
+</section>
 
-    <br><br>
-
-    <input type="text"
-    placeholder="Enter business type">
-
-    <br><br>
-
-    <button>Generate Advertisement</button>
+<footer>
+  <p>© 2026 My First AI Project | Learning and Building with AI</p>
+</footer>
 
 </body>
 </html>
