@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My AI Assistant</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0b1020;
+  color: white;
+}
+
+header {
+  padding: 20px;
+  background: #111a30;
+  text-align: center;
+}
+
+header a {
+  color: #55c8ff;
+  text-decoration: none;
+}
+
+main {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 15px;
+}
+
+.chat {
+  background: #17233d;
+  border-radius: 14px;
+  padding: 20px;
+  min-height: 400px;
+}
+
+.messages {
+  height: 350px;
+  overflow-y: auto;
+}
+
+.message {
+  padding: 13px;
+  margin: 12px 0;
+  border-radius: 10px;
+  line-height: 1.5;
+}
+
+.bot {
+  background: #253957;
+}
+
+.user {
+  background: #075da8;
+  text-align: right;
+}
+
+.input-area {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+input {
+  flex: 1;
+  min-width: 0;
+  padding: 14px;
+  border: 0;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+button {
+  padding: 14px 22px;
+  background: #168cff;
+  color: white;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0872d1;
+}
+
+.note {
+  color: #aabbd0;
+  text-align: center;
+  font-size: 13px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+  <h2>🤖 MY AI ASSISTANT</h2>
+  <a href="index.html">← Back to Home</a>
+</header>
+
+<main>
+  <h2>Welcome to Your AI Assistant</h2>
+  <p>Ask a question to test your first chatbot.</p>
+
+  <div class="chat">
+    <div class="messages" id="messages">
+      <div class="message bot">
+        Hello! Welcome to My AI Assistant.
+        This is your first chatbot demo.
+        How can I help you?
+      </div>
+    </div>
+
+    <div class="input-area">
+      <input
+        type="text"
+        id="userInput"
+        placeholder="Type your question..."
+      >
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <p class="note">
+    Demo version – real AI connection will be added next.
+  </p>
+</main>
+
+<script>
+function sendMessage() {
+  const input = document.getElementById("userInput");
+  const messages = document.getElementById("messages");
+
+  const question = input.value.trim();
+
+  if (!question) return;
+
+  const userMessage = document.createElement("div");
+  userMessage.className = "message user";
+  userMessage.textContent = question;
+  messages.appendChild(userMessage);
+
+  const botMessage = document.createElement("div");
+  botMessage.className = "message bot";
+  botMessage.textContent =
+    "Your chatbot interface is working! In our next step, we will connect a real AI model to answer your questions.";
+
+  messages.appendChild(botMessage);
+
+  input.value = "";
+  messages.scrollTop = messages.scrollHeight;
+}
+
+document.getElementById("userInput")
+.addEventListener("keydown", function(event) {
+  if (event.key === "Enter") {
+    sendMessage();
+  }
+});
+</script>
+
+</body>
+</html>
