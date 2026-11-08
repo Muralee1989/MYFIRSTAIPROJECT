@@ -134,7 +134,7 @@ button:hover {
 </main>
 
 <script>
-function sendMessage() {
+async function sendMessage() {
   const input = document.getElementById("userInput");
   const messages = document.getElementById("messages");
 
@@ -147,23 +147,44 @@ function sendMessage() {
   userMessage.textContent = question;
   messages.appendChild(userMessage);
 
-  const botMessage = document.createElement("div");
-  botMessage.className = "message bot";
-  botMessage.textContent =
-    "Your chatbot interface is working! In our next step, we will connect a real AI model to answer your questions.";
+const botMessage = document.createElement("div");
+botMessage.className = "message bot";
+botMessage.textContent = "Thinking...";
+messages.appendChild(botMessage);
 
-  messages.appendChild(botMessage);
+input.value = "";
+messages.scrollTop = messages.scrollHeight;
 
-  input.value = "";
-  messages.scrollTop = messages.scrollHeight;
+try {
+  const response = await fetch("/api/chat", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      message: question
+    })
+  });
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.error || "Request failed");
+  }
+
+  botMessage.textContent = data.reply;
+
+} catch (error) {
+  botMessage.textContent = "Error: " + error.message;
+}
 }
 
 document.getElementById("userInput")
-.addEventListener("keydown", function(event) {
-  if (event.key === "Enter") {
-    sendMessage();
-  }
-});
+  .addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+      sendMessage();
+    }
+  });
 </script>
 
 </body>
